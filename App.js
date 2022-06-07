@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Screen1 from "./components/Screen1"
 import Screen2 from "./components/Screen2"
 import BigFotoScreen from './components/BigFotoScreen';
+import CameraScreen from './components/CameraScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +29,7 @@ function App() {
           }} />
         <Stack.Screen name="s2" component={Screen2} />
         <Stack.Screen name="wybrane zdjęcie" component={BigFotoScreen} />
+        <Stack.Screen name="camera" component={CameraScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

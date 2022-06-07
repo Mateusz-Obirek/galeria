@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Image, View, Button } from 'react-native'
 import * as Sharing from 'expo-sharing';
+import * as MediaLibrary from "expo-media-library";
 
 export class BigFotoScreen extends Component {
     constructor(props) {
@@ -20,17 +21,24 @@ export class BigFotoScreen extends Component {
                     <Button
                         title="SHARE"
                         onPress={() => {
-
+                            Sharing.shareAsync(this.props.route.params.uri)
                         }}
                     />
                     <Button
                         title="DELETE"
                         onPress={() => {
+                            this.deleteAsset()
                         }}
                     />
                 </View>
             </View >
         )
+    }
+
+    deleteAsset = async()=>{
+        console.log(this.props.route.params.id)
+        await MediaLibrary.deleteAssetsAsync([this.props.route.params.id.toString()])
+        this.props.navigation.goBack();
     }
 }
 
